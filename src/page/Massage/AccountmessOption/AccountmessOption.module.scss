@@ -1,0 +1,35 @@
+.block {
+  width: 200px;
+}
+.block > div {
+  width: 100%;
+}
+.item {
+  padding: 9px 15px;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  color: #292c2c;
+  &:hover {
+    background-color: rgb(238, 234, 229);
+  }
+  &::after {
+    content: "";
+    background: #ccc;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    width: 85%;
+    height: 1px;
+    transform: translate(-50%, 50%);
+  }
+  span:last-child {
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  &:last-child::after {
+    content: "";
+    background: transparent;
+  }
+}
