@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { HeartIconActive, HeartPathIcon } from "../Icon/Icon";
 import Baocaoblock from "../baocaoblock";
-import { createContext, useEffect, useRef } from "react";
+import { createContext, useRef } from "react";
 import Tippy from "@tippyjs/react/headless";
 import AccountPreview from "../SuggesteAcount/AcountPrevew/AcountPreview";
 import { Wrapper } from "../popper";
@@ -20,7 +20,6 @@ function CommentsItems({ data, className, atime }) {
   const [clickheart, setclickheart] = useState(false);
 
   const timeref = useRef();
-  const timetag = timeref.current;
 
   const like = () => {
     setclickheart(true);
@@ -69,7 +68,8 @@ function CommentsItems({ data, className, atime }) {
           </div>
           <div className={cx("contents")}>
             <div className={cx("content")}>
-              <p>{data.content}</p>
+              <div dangerouslySetInnerHTML={{ __html: data.content }} />
+
               <p className={cx("daterep")}>
                 <span ref={timeref}>{atime}</span>
                 <span>Repply</span>

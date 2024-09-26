@@ -3,6 +3,7 @@ import { config, setconfig } from "~/App";
 import { detailuser } from "~/Services/detailluserlogin";
 import { FollowingList } from "~/Services/Flollowservice";
 import { getListUserLikedVideo } from "~/Services/likeservices/getListUserLikedVideo";
+import HTTP from "~/utils/http";
 export const Appcontext = createContext("");
 
 function ContexApi({ children }) {
@@ -80,6 +81,19 @@ function ContexApi({ children }) {
     }
   };
   // console.log(listLikeduser);
+
+  const api = async () => {
+    await HTTP.get("/videos", {
+      params: {
+        page: 1,
+      },
+    });
+  };
+
+  useEffect(() => {
+    api();
+  }, []);
+
   return (
     <Appcontext.Provider
       value={{

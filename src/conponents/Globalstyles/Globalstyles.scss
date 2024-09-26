@@ -117,3 +117,26 @@ p {
 .tippy-content {
   padding: 8px 9px;
 }
+.tiptap {
+  // tiptap
+  letter-spacing: 1px;
+  min-height: 40px;
+  border-radius: 10px;
+  padding: 8px 18px;
+  max-height: 100px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}
+// tiptap placeholder
+p.is-editor-empty:first-child::before {
+  opacity: 0.6;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

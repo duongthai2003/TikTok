@@ -1,107 +1,93 @@
 import classNames from "classnames/bind";
-import { useEffect, useRef, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Acongicon, EmoineIcon } from "~/conponents/Icon/Icon";
 import styles from "./WriteComment.module.scss";
-import useDebounce from "~/hook/useDebounce";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import { CreateComment } from "~/Services/commentService/CreateComment";
+import Tiptap from "~/conponents/Tiptap/Tiptap";
+import { Controller, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 const cx = classNames.bind(styles);
+const formSchema = z.object({
+  comment: z.string(), //.min(1, { message: "Mô tả không được để trống" }),
+});
 
 function WriteComment({ videoid, onclick, recallcomment }) {
-  const [commentvalue, setcommentvalue] = useState("");
-  const [senbtn, setsenbtn] = useState(false);
-  const [place, setplace] = useState(true);
+  const [isSetInitContent, setIsSetInitContent] = useState(false);
 
-  const debounce = useDebounce(commentvalue, 500);
+  const { control, handleSubmit, getValues } = useForm({
+    resolver: zodResolver(formSchema),
+  });
+
   const { detailluserlogin, btnlikeactive } = useContext(Appcontext);
-  if (detailluserlogin) {
-    onclick();
-  }
 
-  // calll api create comment
-  useEffect(() => {
-    if (!debounce.trim()) {
-      return;
+  const handleIsreset = () => {
+    if (isSetInitContent) {
+      setIsSetInitContent(false);
+    } else {
+      setIsSetInitContent(true);
     }
-    const b = async () => {
+  };
+  const onSubmit = async () => {
+    const comment_content = getValues("comment");
+    if (detailluserlogin !== "") {
+      // calll api create comment
       try {
         await CreateComment(
-          debounce,
+          comment_content,
           detailluserlogin && detailluserlogin.id,
           videoid
         );
         btnlikeactive();
+        handleIsreset();
       } catch (err) {
         console.log(err);
       }
-      inutref.current.innerText = "";
       recallcomment();
-      if (inutref.current.innerText.trim().length === 0) {
-        setplace(true);
-      }
-    };
-    if (inutref.current.innerText.trim().length > 0) {
-      b();
-      setplace(true);
-    }
-  }, [senbtn]);
-  const inutref = useRef();
-  const handlesend = (e) => {
-    if (commentvalue !== "") {
-      senbtn ? setsenbtn(false) : setsenbtn(true);
-    }
-  };
-
-  const handleonkeydown = (e) => {
-    if (e.target.innerText === " ") {
-      e.target.innerText = "";
     } else {
-      const contentComment = e.target.innerText;
-
-      setcommentvalue(contentComment);
-      setplace(false);
-    }
-    if (e.target.innerText.trim().length === 0) {
-      setplace(true);
+      console.log(6666666666);
+      onclick();
     }
   };
   return (
-    <div className={cx("wrappper")}>
-      <div>
-        {/* <input
-          className={cx("input")}
-          ref={inutref}
-          type={"text"}
-          placeholder="Thêm bình luận ..."
-          spellCheck={false}
-          required
-          name="content"
-          onChange={handleChange}
-        /> */}
-        {place && <span className={cx("placehoder")}>Thêm bình luận ...</span>}
-        <div
-          ref={inutref}
-          className={cx("iputcomment")}
-          contentEditable="true"
-          suppressContentEditableWarning={true}
-          // role={"textbox"}
-          spellCheck="false"
-          name="content"
-          aria-multiline
-          onKeyUp={handleonkeydown}
-        ></div>
+    <div className="flex" style={{ display: "flex" }}>
+      <form onSubmit={handleSubmit(onSubmit)} className={cx("wrappper")}>
         <div>
-          <span>
-            <Acongicon />
-          </span>
-          <span>
-            <EmoineIcon />
-          </span>
+          <Controller
+            control={control}
+            name="comment"
+            render={({ field }) => {
+              return (
+                <Tiptap
+                  isSetDefaultContent={isSetInitContent}
+                  content={field.value}
+                  onChange={field.onChange}
+                />
+              );
+            }}
+          ></Controller>
+
+          <div>
+            <span>
+              <Acongicon />
+            </span>
+            <span>
+              <EmoineIcon />
+            </span>
+          </div>
         </div>
-      </div>
-      <button onClick={detailluserlogin !== "" ? handlesend : onclick}>
-        Đăng
-      </button>
+        <button
+          onClick={() => {
+            if (detailluserlogin === "") {
+              onclick();
+            }
+          }}
+        >
+          Đăng
+        </button>
+      </form>
     </div>
   );
 }

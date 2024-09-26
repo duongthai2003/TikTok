@@ -1,18 +1,11 @@
-import {
-  faEllipsis,
-  faLock,
-  faPenToSquare,
-  faSdCard,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLock, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
 import classNames from "classnames/bind";
-import { Fragment, useContext, useEffect, useRef, useState } from "react";
-import { Await, Link } from "react-router-dom";
+import { Fragment, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Baocaoblock from "~/conponents/baocaoblock";
-import { detailluserlogin } from "~/layouts/Conponent/Header/Header";
 import Button from "~/conponents/Button";
 import {
   Lockicon,
@@ -128,7 +121,7 @@ function Profile() {
             <div className={cx("description")}>
               <div className={cx("info")}>
                 {nickuser.avatar === "" ? (
-                  <img src={images.noImg}></img>
+                  <img src={images.noImg} alt=""></img>
                 ) : (
                   // <img src={IPHTTP + nickuser.avatar}></img>
                   <Image src={IPHTTP + nickuser.avatar}></Image>
