@@ -83,7 +83,8 @@ function ContexApi({ children }) {
   // console.log(listLikeduser);
 
   const api = async () => {
-    await HTTP.get("/videos", {
+    console.log("test auth");
+    await HTTP.get("/videos?gh=gh", {
       params: {
         page: 1,
       },
