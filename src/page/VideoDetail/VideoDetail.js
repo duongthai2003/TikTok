@@ -16,7 +16,6 @@ import VideoTag from "~/conponents/VideoTag";
 import styles from "./VideoDetail.module.scss";
 
 import { getanvideo } from "~/Services/VideoService/getanvideo";
-import { IPHTTP } from "~/utils/httprequest";
 import { Getcomment } from "~/Services/commentService/Commentlist";
 import { Link } from "react-router-dom";
 import LoginRegister from "../LoginRegister/LoginRegister";
@@ -191,7 +190,7 @@ function VideoDetail() {
             className={"detailvideo"}
             onclicplaypause
             onlodedplay
-            src={IPHTTP + datavideo.file_url}
+            src={process.env.REACT_APP_API_URL + datavideo.file_url}
             // onlodedplay
           ></VideoTag>
           {videoref !== undefined && (
@@ -234,7 +233,7 @@ function VideoDetail() {
               type={"text"}
               readOnly
               ref={linkref}
-              value={IPHTTP + datavideo.file_url}
+              value={process.env.REACT_APP_API_URL + datavideo.file_url}
             ></input>
             <button onClick={handlecoppy}>Copy link</button>
           </div>
@@ -285,7 +284,9 @@ function VideoDetail() {
                         }`;
                       }}
                     >
-                      <VideoTag src={IPHTTP + item.file_url} />
+                      <VideoTag
+                        src={process.env.REACT_APP_API_URL + item.file_url}
+                      />
                     </Link>
                   );
                 })}

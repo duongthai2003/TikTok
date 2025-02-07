@@ -10,7 +10,6 @@ import TippyOptionvideo from "./tippyoptionvideo";
 import Volume from "../Volume";
 import { config } from "~/App";
 import { Link } from "react-router-dom";
-import { IPHTTP } from "~/utils/httprequest";
 const cx = classNames.bind(styles);
 
 function Video({ data }) {
@@ -65,6 +64,7 @@ function Video({ data }) {
     // khi đang ở tab này thì video sẽ tự động phats
     videoref.current && videoref.current.play();
   };
+  // const sliceVideoPath = data.file_url.substring(7);
   return (
     <div className={cx("wrapper")} onLoadedData={videoScroll}>
       <div
@@ -77,7 +77,7 @@ function Video({ data }) {
             loop
             ref={videoref}
             muted={config.ismute}
-            src={IPHTTP + data.file_url}
+            src={process.env.REACT_APP_API_URL + data.file_url}
             // poster={data.thumb_url}
             playsInline
             onLoadedData={() => {

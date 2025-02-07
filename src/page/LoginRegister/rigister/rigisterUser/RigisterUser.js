@@ -1,17 +1,12 @@
 import styles from "./Regidteruser.module.scss";
 import classNames from "classnames/bind";
-import { v4 as uuidv4 } from "uuid";
-// import Button from "../../assets/button";
 import Button from "~/conponents/Button";
 import Input from "../../assets/input";
 import { CheckEmail } from "../../assets/emailCheck";
 import React, { memo, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faCheck, faX } from "@fortawesome/free-solid-svg-icons";
-import { IPHTTP } from "~/utils/httprequest";
+import { faArrowLeft, faX } from "@fortawesome/free-solid-svg-icons";
 import useDebounce from "~/hook/useDebounce";
-import Image from "~/conponents/Image";
-import { HomeIcon, SelectFileIcon } from "~/conponents/Icon/Icon";
 import { CreateUser } from "~/Services/User/createUserService";
 import Selectfileavatar from "./selectfileavatar";
 

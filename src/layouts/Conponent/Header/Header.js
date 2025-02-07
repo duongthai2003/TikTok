@@ -25,7 +25,6 @@ import Image from "~/conponents/Image";
 import LoginRegister from "~/page/LoginRegister/LoginRegister";
 import { useContext, useState } from "react";
 
-import { IPHTTP } from "~/utils/httprequest";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
 export let AcountLogin;
 const cx = classNames.bind(styles);
@@ -149,7 +148,7 @@ function Header() {
                 src={
                   detailluserlogin.avatar === ""
                     ? images.noImg
-                    : IPHTTP + detailluserlogin.avatar
+                    : process.env.REACT_APP_API_URL + detailluserlogin.avatar
                 }
               />
             ) : (

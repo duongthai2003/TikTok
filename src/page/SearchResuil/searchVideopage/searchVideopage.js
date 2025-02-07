@@ -4,7 +4,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { SearchContex } from "~/hook/context/SearchContex";
 import * as searchservice from "~/Services/searchServices";
 import VideoTag from "~/conponents/VideoTag";
-import { IPHTTP } from "~/utils/httprequest";
 import { Link } from "react-router-dom";
 import AccountItem from "~/conponents/AccountItem";
 import Loading from "~/conponents/loading/Loading";
@@ -55,7 +54,7 @@ function SearchVideopage({}) {
                   <div key={index} className={cx(" col-sm-4", "item_video")}>
                     <Link className={cx("item")} to={`/videos/${item.id}`}>
                       <VideoTag
-                        src={IPHTTP + item.file_url}
+                        src={process.env.REACT_APP_API_URL + item.file_url}
                         className="searchPage"
                       ></VideoTag>
 

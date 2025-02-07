@@ -1,6 +1,6 @@
 import styles from "./VideoTag.module.scss";
 import classNames from "classnames/bind";
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { setconfig } from "~/App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";

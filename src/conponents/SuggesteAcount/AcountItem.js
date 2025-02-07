@@ -6,7 +6,6 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 import { Wrapper } from "../popper";
 import AccountPreview from "./AcountPrevew/AcountPreview";
-import { IPHTTP } from "~/utils/httprequest";
 import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
@@ -26,7 +25,10 @@ function Acountitem({ data }) {
         )}
       >
         <Link to={`/@${data.nickname}`} className={cx("acount-item")}>
-          <Image className={cx("avatar")} src={IPHTTP + data.avatar} />
+          <Image
+            className={cx("avatar")}
+            src={process.env.REACT_APP_API_URL + data.avatar}
+          />
           <div className={cx("item-info")}>
             <p className={cx("nickname")}>
               <strong>{data.nickname}</strong>

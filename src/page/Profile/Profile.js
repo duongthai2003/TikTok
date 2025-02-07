@@ -19,7 +19,6 @@ import Shareblock from "~/conponents/Videobtnactive/Shareblock";
 import VideoTag from "~/conponents/VideoTag";
 
 import * as profileservice from "~/Services/profileService";
-import { IPHTTP } from "~/utils/httprequest";
 import Image from "~/conponents/Image";
 import styles from "./Profile.module.scss";
 import images from "~/access/image";
@@ -123,8 +122,9 @@ function Profile() {
                 {nickuser.avatar === "" ? (
                   <img src={images.noImg} alt=""></img>
                 ) : (
-                  // <img src={IPHTTP + nickuser.avatar}></img>
-                  <Image src={IPHTTP + nickuser.avatar}></Image>
+                  <Image
+                    src={process.env.REACT_APP_API_URL + nickuser.avatar}
+                  ></Image>
                 )}
                 <div>
                   <div className={cx("nick")}>
@@ -271,7 +271,7 @@ function Profile() {
                       >
                         <VideoTag
                           className={cx("profilevideo")}
-                          src={IPHTTP + item.file_url}
+                          src={process.env.REACT_APP_API_URL + item.file_url}
                           mouseOutAutoPause
                           mouseOverAutoPlay
                         >

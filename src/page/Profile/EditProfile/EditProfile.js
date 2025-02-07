@@ -1,7 +1,7 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
-import { Fragment, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "~/conponents/Button";
 import { Wrapper } from "~/conponents/popper";
@@ -9,7 +9,6 @@ import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import Input from "~/page/LoginRegister/assets/input";
 import Selectfileavatar from "~/page/LoginRegister/rigister/rigisterUser/selectfileavatar";
 import { Updateaccount } from "~/Services/User/createUserService";
-import { IPHTTP } from "~/utils/httprequest";
 import styles from "./EditProfile.module.scss";
 const cx = classNames.bind(styles);
 
@@ -74,7 +73,9 @@ function EditProfile({ onclick }) {
                 <Selectfileavatar
                   avatar={avatar}
                   setAvatar={setAvatar}
-                  currentavatar={IPHTTP + detailluserlogin.avatar}
+                  currentavatar={
+                    process.env.REACT_APP_API_URL + detailluserlogin.avatar
+                  }
                 />
               </div>
             </div>

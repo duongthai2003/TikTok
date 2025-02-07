@@ -6,17 +6,12 @@ import styles from "./Upload.module.scss";
 import Image from "~/conponents/Image";
 import VideoTag from "~/conponents/VideoTag";
 import Button from "~/conponents/Button";
-import { IPHTTP } from "~/utils/httprequest";
 import { useRef, useState, useContext, useMemo, useEffect } from "react";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
-import useDebounce from "~/hook/useDebounce";
 import VideoThumbnail from "react-video-thumbnail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Uploadservice } from "~/Services/VideoService/uploadservices";
-
-import axios from "axios";
-import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 function Upload({ sa }) {
@@ -149,7 +144,10 @@ function Upload({ sa }) {
                 </div>
                 <div className={cx("avartar")}>
                   <Image
-                    src={detailluserlogin && IPHTTP + detailluserlogin.avatar}
+                    src={
+                      detailluserlogin &&
+                      process.env.REACT_APP_API_URL + detailluserlogin.avatar
+                    }
                   />
                 </div>
                 <div className={cx("Activevideo")}>

@@ -1,8 +1,7 @@
 import axios from "axios";
-export var IPHTTP = "https://quangthai2003.id.vn/"; //http://localhost:81/
 const httprequest = axios.create({
   // baseURL: `${IPHTTP}TIKTOK_API/public/api/`,// dung cho localhost
-  baseURL: `${IPHTTP}public/api/`,
+  baseURL: `${process.env.REACT_APP_API_URL}public/api/`,
 });
 
 export const lay = async (apipath, options = {}) => {

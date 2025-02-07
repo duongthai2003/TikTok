@@ -1,10 +1,8 @@
 import classNames from "classnames/bind";
 import styles from "./Following.module.scss";
 import { useContext, useEffect, useState } from "react";
-import * as userServices from "~/Services/VideoService/Videoservice";
 import Image from "~/conponents/Image";
 import AccountItem from "~/conponents/AccountItem";
-import { IPHTTP } from "~/utils/httprequest";
 import { Suggest } from "~/Services/SuggestServices";
 import { config } from "~/App";
 import FollowBtn from "../Profile/Follow/FollowBtn";
@@ -42,7 +40,9 @@ function SuggessFollowaccount({
                 <div className={cx(" ", "col-xl-4")} key={index}>
                   <div className={cx("item")}>
                     <div className={cx("bgk_img")}>
-                      <Image src={IPHTTP + item.avatar}></Image>
+                      <Image
+                        src={process.env.REACT_APP_API_URL + item.avatar}
+                      ></Image>
                     </div>
                     <div className={cx("user")}>
                       <AccountItem data={item} className="following_page" />

@@ -2,7 +2,6 @@ import styles from "./Menu.module.scss";
 import classNames from "classnames/bind";
 import { NavLink } from "react-router-dom";
 import Image from "~/conponents/Image";
-import { IPHTTP } from "~/utils/httprequest";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import { useContext } from "react";
 /* cái này nó sẽ giúp để có thẻ lm dc việc khi bấm vào thì nó có thực hiện them 1 vài cong việc
@@ -32,7 +31,9 @@ function MenuItemSidebar({
       {/*phải viết class như này thì nó ms chay dc cái active  */}
       <span className={cx("icon")}>{icon}</span>
       <span className={cx("active-icon")}>{activeicon}</span>
-      {image && <Image src={IPHTTP + detailluserlogin.avatar} />}
+      {image && (
+        <Image src={process.env.REACT_APP_API_URL + detailluserlogin.avatar} />
+      )}
       <p className={cx("title")}>{title}</p>
     </NavLink>
   );

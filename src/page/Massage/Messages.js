@@ -1,25 +1,17 @@
 import { faEllipsis, faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { click } from "@testing-library/user-event/dist/click";
 import Tippy from "@tippyjs/react/headless";
 import classNames from "classnames/bind";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AccountItem from "~/conponents/AccountItem";
-import HomeHeader from "~/conponents/HomeHeader";
 import Image from "~/conponents/Image";
 import { Wrapper } from "~/conponents/popper";
-import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import { Suggest } from "~/Services/SuggestServices";
-import { IPHTTP } from "~/utils/httprequest";
-import Home from "../Home/Home";
 import AccountmessOption from "./AccountmessOption/AccountmessOption";
 import BackBtn from "./BackBtn/BackBtn";
-import Close from "./Close/Close";
 import styles from "./Message.module.scss";
 const cx = classNames.bind(styles);
 function Messages({}) {
-  const { detailluserlogin } = useContext(Appcontext);
-
   const [listUserAccounts, setlistUserAccounts] = useState([]);
   const [clickuser, setclickuser] = useState("");
 
@@ -103,7 +95,9 @@ function Messages({}) {
                       lượng rất nặng. {clickuser.id}
                     </p>
                     <div className={cx("avatar")}>
-                      <Image src={IPHTTP + clickuser.avatar} />
+                      <Image
+                        src={process.env.REACT_APP_API_URL + clickuser.avatar}
+                      />
                     </div>
                   </div>
                   <div className={cx("userresive")}>
