@@ -16,6 +16,7 @@ function VideoTag(
     playbtn = true,
     onclicplaypause = false,
     children,
+    poster,
   },
   videotagref
 ) {
@@ -71,6 +72,7 @@ function VideoTag(
         muted={muted === true ? false : true}
         ref={videoref}
         src={src}
+        poster={poster}
         loop
         onLoadedData={onlodedplay ? play : noactive}
       />

@@ -54,7 +54,8 @@ function SearchVideopage({}) {
                   <div key={index} className={cx(" col-sm-4", "item_video")}>
                     <Link className={cx("item")} to={`/videos/${item.id}`}>
                       <VideoTag
-                        src={process.env.REACT_APP_API_URL + item.file_url}
+                        src={item.file_url}
+                        poster={item.img_url}
                         className="searchPage"
                       ></VideoTag>
 

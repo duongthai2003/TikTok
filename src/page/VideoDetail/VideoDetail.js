@@ -190,7 +190,7 @@ function VideoDetail() {
             className={"detailvideo"}
             onclicplaypause
             onlodedplay
-            src={process.env.REACT_APP_API_URL + datavideo.file_url}
+            src={datavideo.file_url}
             // onlodedplay
           ></VideoTag>
           {videoref !== undefined && (
@@ -284,9 +284,7 @@ function VideoDetail() {
                         }`;
                       }}
                     >
-                      <VideoTag
-                        src={process.env.REACT_APP_API_URL + item.file_url}
-                      />
+                      <VideoTag src={item.file_url} poster={item.img_url} />
                     </Link>
                   );
                 })}

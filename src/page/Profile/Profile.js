@@ -272,6 +272,7 @@ function Profile() {
                         <VideoTag
                           className={cx("profilevideo")}
                           src={item.file_url}
+                          poster={item.img_url}
                           mouseOutAutoPause
                           mouseOverAutoPlay
                         >
