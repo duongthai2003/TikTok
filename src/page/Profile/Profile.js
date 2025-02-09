@@ -271,7 +271,7 @@ function Profile() {
                       >
                         <VideoTag
                           className={cx("profilevideo")}
-                          src={process.env.REACT_APP_API_URL + item.file_url}
+                          src={item.file_url}
                           mouseOutAutoPause
                           mouseOverAutoPlay
                         >

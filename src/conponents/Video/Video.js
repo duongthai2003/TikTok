@@ -77,9 +77,9 @@ function Video({ data }) {
             loop
             ref={videoref}
             muted={config.ismute}
-            src={process.env.REACT_APP_API_URL + data.file_url}
-            // poster={data.thumb_url}
+            src={data.file_url}
             playsInline
+            poster={data.img_url}
             onLoadedData={() => {
               window.addEventListener("scroll", videoScroll);
             }}

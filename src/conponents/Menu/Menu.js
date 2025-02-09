@@ -53,15 +53,13 @@ function Menu({
 
             switch (item.title) {
               case "log out":
-                {
-                  setconfig("token_login", "");
-                  setdata_login_success("");
-                }
+                setconfig("token_login", "");
+                setdata_login_success("");
+
                 break;
               case "view profile":
-                {
-                  setsearch_user_click(`/@${detailluserlogin.nickname}`);
-                }
+                setsearch_user_click(`/@${detailluserlogin.nickname}`);
+
                 break;
               default:
                 return;

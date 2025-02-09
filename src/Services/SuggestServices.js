@@ -1,10 +1,10 @@
-// import * as httprequest from "~/utils/httprequest";
-import { lay } from "~/utils/httprequest";
+import HTTP from "~/utils/http";
+
 export const Suggest = async ({ page, perpage }) => {
   try {
-    const res = await lay("suggess/users", {
+    const res = await HTTP.get("suggess/users", {
       params: { page },
     });
-    return res;
+    return res.data;
   } catch (err) {}
 };

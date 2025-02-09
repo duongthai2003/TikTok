@@ -1,18 +1,18 @@
-import * as httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 export const Searchuser = async (q, typevl, page) => {
   try {
-    const res = await httprequest.lay(`users/search`, {
+    const res = await HTTP.get(`users/search`, {
       params: { q, type: typevl, page },
     });
-    return res;
+    return res.data;
   } catch (err) {}
 };
 
 export const SearchVideo = async (q, page) => {
   try {
-    const resuilt = await httprequest.lay("search/videos", {
+    const resuilt = await HTTP.get("search/videos", {
       params: { q, page },
     });
-    return resuilt;
+    return resuilt.data;
   } catch (err) {}
 };

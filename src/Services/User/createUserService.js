@@ -1,7 +1,7 @@
-import httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 export const CreateUser = async (email, password, name, nickname, avatar) => {
   try {
-    const resuilt = await httprequest.post(
+    const resuilt = await HTTP.post(
       "users/register",
       {
         email,
@@ -21,7 +21,7 @@ export const CreateUser = async (email, password, name, nickname, avatar) => {
   } catch {}
 };
 export const Updateaccount = async (id, name, nickname, avatar, bio) => {
-  const resuilt = await httprequest.post(
+  const resuilt = await HTTP.post(
     `users/update/${id}`,
     {
       name,

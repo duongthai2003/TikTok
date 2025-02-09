@@ -1,8 +1,8 @@
-const { deleteData } = require("~/utils/httprequest");
+import HTTP from "~/utils/http";
 
 export const DeleteVideosevice = async (idvideo, iduser) => {
   try {
-    deleteData("/delete/video", {
+    HTTP.delete("/delete/video", {
       params: {
         idvideo,
         iduser,

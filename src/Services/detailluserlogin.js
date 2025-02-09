@@ -1,7 +1,8 @@
-import httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
+
 export const detailuser = async (token) => {
   try {
-    const response = await httprequest.post(
+    const response = await HTTP.post(
       "users/details",
       {
         //parrams

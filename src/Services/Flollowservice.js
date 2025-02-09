@@ -1,44 +1,44 @@
-import * as httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 
 export const FollowingList = async (userId) => {
   try {
-    const resuilt = await httprequest.lay("me/following", {
+    const resuilt = await HTTP.get("me/following", {
       params: {
         userId,
       },
     });
 
-    return resuilt;
+    return resuilt.data;
   } catch (err) {}
 };
 
 export const FollowerList = async (userId) => {
   try {
-    const resuilt = await httprequest.lay("me/follower", {
+    const resuilt = await HTTP.get("me/follower", {
       params: {
         userId,
       },
     });
 
-    return resuilt;
+    return resuilt.data;
   } catch (err) {}
 };
 
 export const friendsList = async (userId) => {
   try {
-    const resuilt = await httprequest.lay("me/friends", {
+    const resuilt = await HTTP.get("me/friends", {
       params: {
         userId,
       },
     });
 
-    return resuilt;
+    return resuilt.data;
   } catch (err) {}
 };
 
 export const followAndUnfollow = async (userID, followingUserId) => {
   try {
-    const resuilt = await httprequest.post("me/following", {
+    await HTTP.post("me/following", {
       userID,
       followingUserId,
     });

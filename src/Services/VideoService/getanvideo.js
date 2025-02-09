@@ -1,7 +1,7 @@
-import * as httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 export const getanvideo = async (idvideo) => {
   try {
-    const resuilt = await httprequest.lay(`${idvideo}`, {});
-    return resuilt;
+    const resuilt = await HTTP.get(`${idvideo}`, {});
+    return resuilt.data;
   } catch (err) {}
 };
