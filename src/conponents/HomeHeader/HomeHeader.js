@@ -80,10 +80,7 @@ function HomeHeaderItem({ data, className, id_current_user }) {
       <div className={cx("user")}>
         <Accprevi>
           <Link to={`@${datauser.nickname}`} onClick={handleclick_user}>
-            <Image
-              className={cx("avatar")}
-              src={process.env.REACT_APP_API_URL + datauser.avatar}
-            ></Image>
+            <Image className={cx("avatar")} src={datauser.avatar}></Image>
           </Link>
         </Accprevi>
 

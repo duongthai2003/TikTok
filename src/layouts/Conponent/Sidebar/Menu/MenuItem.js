@@ -31,9 +31,7 @@ function MenuItemSidebar({
       {/*phải viết class như này thì nó ms chay dc cái active  */}
       <span className={cx("icon")}>{icon}</span>
       <span className={cx("active-icon")}>{activeicon}</span>
-      {image && (
-        <Image src={process.env.REACT_APP_API_URL + detailluserlogin.avatar} />
-      )}
+      {image && <Image src={detailluserlogin.avatar} />}
       <p className={cx("title")}>{title}</p>
     </NavLink>
   );

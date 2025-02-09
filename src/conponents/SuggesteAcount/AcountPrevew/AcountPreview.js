@@ -19,11 +19,7 @@ function AccountPreview({ data, bodyshow = false }) {
   return (
     <div className={cx("wrapper", { bodyshow })}>
       <div className={cx("header")}>
-        <Image
-          className={cx("avata")}
-          src={process.env.REACT_APP_API_URL + data.avatar}
-          alt=""
-        />
+        <Image className={cx("avata")} src={data.avatar} alt="" />
         <div>
           {detailluserlogin.id === data.id ? (
             ""

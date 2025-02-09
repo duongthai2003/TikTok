@@ -25,10 +25,7 @@ function Acountitem({ data }) {
         )}
       >
         <Link to={`/@${data.nickname}`} className={cx("acount-item")}>
-          <Image
-            className={cx("avatar")}
-            src={process.env.REACT_APP_API_URL + data.avatar}
-          />
+          <Image className={cx("avatar")} src={data.avatar} />
           <div className={cx("item-info")}>
             <p className={cx("nickname")}>
               <strong>{data.nickname}</strong>

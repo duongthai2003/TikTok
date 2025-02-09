@@ -122,9 +122,7 @@ function Profile() {
                 {nickuser.avatar === "" ? (
                   <img src={images.noImg} alt=""></img>
                 ) : (
-                  <Image
-                    src={process.env.REACT_APP_API_URL + nickuser.avatar}
-                  ></Image>
+                  <Image src={nickuser.avatar}></Image>
                 )}
                 <div>
                   <div className={cx("nick")}>

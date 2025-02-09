@@ -143,12 +143,7 @@ function Upload({ sa }) {
                   <VideoTag muted src={srcpath} />
                 </div>
                 <div className={cx("avartar")}>
-                  <Image
-                    src={
-                      detailluserlogin &&
-                      process.env.REACT_APP_API_URL + detailluserlogin.avatar
-                    }
-                  />
+                  <Image src={detailluserlogin && detailluserlogin.avatar} />
                 </div>
                 <div className={cx("Activevideo")}>
                   <Videobtnactive data={Data} />

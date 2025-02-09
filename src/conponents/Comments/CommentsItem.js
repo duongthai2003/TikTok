@@ -32,10 +32,7 @@ function CommentsItems({ data, className, atime }) {
       <div className={cx("user")}>
         <Link to={`/@${data.user.nickname}`}>
           {" "}
-          <Image
-            className={cx("avatar")}
-            src={process.env.REACT_APP_API_URL + data.user.avatar}
-          ></Image>
+          <Image className={cx("avatar")} src={data.user.avatar}></Image>
         </Link>
 
         <div className={cx("info")}>

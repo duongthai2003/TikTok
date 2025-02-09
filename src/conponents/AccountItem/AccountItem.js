@@ -25,10 +25,7 @@ function AccountItem({ data, className, showfl = false, nolinktag = false }) {
       className={cx("wrapper", { [className]: className })}
       onClick={clickaccount}
     >
-      <Image
-        className={cx("avata")}
-        src={process.env.REACT_APP_API_URL + data.avatar}
-      ></Image>
+      <Image className={cx("avata")} src={data.avatar}></Image>
       <div className={cx("info")}>
         {showfl && <p className={cx("bio")}>{data.bio}</p>}
         <p className={cx("name")}>

@@ -95,9 +95,7 @@ function Messages({}) {
                       lượng rất nặng. {clickuser.id}
                     </p>
                     <div className={cx("avatar")}>
-                      <Image
-                        src={process.env.REACT_APP_API_URL + clickuser.avatar}
-                      />
+                      <Image src={clickuser.avatar} />
                     </div>
                   </div>
                   <div className={cx("userresive")}>

@@ -233,7 +233,7 @@ function VideoDetail() {
               type={"text"}
               readOnly
               ref={linkref}
-              value={process.env.REACT_APP_API_URL + datavideo.file_url}
+              value={datavideo.file_url}
             ></input>
             <button onClick={handlecoppy}>Copy link</button>
           </div>

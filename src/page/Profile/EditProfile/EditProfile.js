@@ -73,9 +73,7 @@ function EditProfile({ onclick }) {
                 <Selectfileavatar
                   avatar={avatar}
                   setAvatar={setAvatar}
-                  currentavatar={
-                    process.env.REACT_APP_API_URL + detailluserlogin.avatar
-                  }
+                  currentavatar={detailluserlogin.avatar}
                 />
               </div>
             </div>

@@ -40,9 +40,7 @@ function SuggessFollowaccount({
                 <div className={cx(" ", "col-xl-4")} key={index}>
                   <div className={cx("item")}>
                     <div className={cx("bgk_img")}>
-                      <Image
-                        src={process.env.REACT_APP_API_URL + item.avatar}
-                      ></Image>
+                      <Image src={item.avatar}></Image>
                     </div>
                     <div className={cx("user")}>
                       <AccountItem data={item} className="following_page" />

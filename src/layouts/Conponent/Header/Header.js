@@ -148,7 +148,7 @@ function Header() {
                 src={
                   detailluserlogin.avatar === ""
                     ? images.noImg
-                    : process.env.REACT_APP_API_URL + detailluserlogin.avatar
+                    : detailluserlogin.avatar
                 }
               />
             ) : (
