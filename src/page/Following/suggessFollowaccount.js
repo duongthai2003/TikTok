@@ -33,7 +33,7 @@ function SuggessFollowaccount({
   }, [page, detailluserlogin]);
   return (
     <div className={cx("suggestfollow", "container")} onClick={() => {}}>
-      <div className={cx("row")}>
+      <div className={cx("grid grid-cols-3 gap-[15px]")}>
         {suggesteUsers
           ? suggesteUsers.map((item, index) => {
               return (

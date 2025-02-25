@@ -66,8 +66,6 @@ function Profile() {
   nickuser &&
     (document.title = `${nickuser.name} (@${nickuser.nickname}) | TikTok`);
 
-  // console.log(nickuser);
-  // console.log(detailluserlogin);
   const check_follow = CheckArray(
     followinguserlist && followinguserlist,
     nickuser && nickuser.id
@@ -102,7 +100,7 @@ function Profile() {
     // ẩn register sau khi dang nhap thanh cong
     hideshowRegister();
   }
-  console.log(nickuser);
+
   return (
     <div className={cx("wrapper")}>
       {nickuser === undefined ? (
@@ -116,7 +114,7 @@ function Profile() {
         </div>
       ) : (
         <>
-          <div className={cx("profileAcount")}>
+          <div className={cx("profileAcount", "ml-[8px]")}>
             <div className={cx("description")}>
               <div className={cx("info")}>
                 {nickuser.avatar === "" ? (
@@ -246,7 +244,7 @@ function Profile() {
             </div>
           </div>
           <div className={cx("videoblock")}>
-            <div className={cx("buttontab")}>
+            <div className={cx("buttontab", "ml-[8px]")}>
               <div className={cx("btn")} onClick={video}>
                 <Button>Video</Button>
               </div>

@@ -22,7 +22,7 @@ function Friend({}) {
         userId: detailluserlogin && detailluserlogin.id,
         page: page,
       });
-      setvideo(resuilt);
+      setvideo(resuilt.data);
       setshowsugess(true);
     };
     detailluserlogin && fetchApi();

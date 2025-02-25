@@ -47,11 +47,11 @@ function SearchVideopage({}) {
     <div className={cx("wrapper")}>
       {searchResuiltlist.length > 0 ? (
         <div className={cx("container")}>
-          <div className={cx("row")}>
+          <div className={cx("grid grid-cols-3 gap-4")}>
             {searchResuiltlist &&
               searchResuiltlist.map((item, index) => {
                 return (
-                  <div key={index} className={cx(" col-sm-4", "item_video")}>
+                  <div key={index} className={cx(" ", "item_video")}>
                     <Link className={cx("item")} to={`/videos/${item.id}`}>
                       <VideoTag
                         src={item.file_url}

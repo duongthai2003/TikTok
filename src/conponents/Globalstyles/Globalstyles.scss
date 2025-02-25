@@ -1,5 +1,7 @@
 @import "normalize.css"; //reset css
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ///nhung font
 @font-face {
   font-family: ProximaNova;

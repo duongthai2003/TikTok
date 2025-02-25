@@ -53,7 +53,7 @@ function Live() {
   return (
     <div className={cx("wrapper", "container")}>
       <div className={cx("navbarblock")}>
-        <div className={cx("nav", "nav_list")}>
+        <div className={cx("flex ", "nav_list")}>
           {nabar.map((item, index) => {
             return (
               <Link

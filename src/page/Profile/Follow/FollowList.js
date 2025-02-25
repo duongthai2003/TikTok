@@ -60,7 +60,7 @@ function FollowList({ currentuser, onclick, followtype, setfollowtype }) {
   } else {
     datalist = data;
   }
-  console.log(friendlist);
+
   return (
     <div className={cx("wrapper")} onClick={onclick}>
       <div
@@ -77,7 +77,7 @@ function FollowList({ currentuser, onclick, followtype, setfollowtype }) {
             </span>
           </span>
         </div>
-        <div className={cx("nav", "naba")}>
+        <div className={cx("flex", "naba")}>
           <div
             className={cx(
               "nav-item",

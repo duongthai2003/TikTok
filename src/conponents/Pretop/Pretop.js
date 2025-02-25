@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function Pretop({ className }) {
   return (
     <div className={cx("wrapper", { [className]: className })}>
-      <Button href={"#"} lefticon={<Pretopicon />}></Button>
+      <Button href={"#"} lefticon={<Pretopicon />} className={""}></Button>
     </div>
   );
 }

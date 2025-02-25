@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicroutes } from "./Routers/index";
 import { DefaultLayout } from "./layouts";
 import BlankLayout from "./layouts/BlankLayout/BlankLayout";
-import SearchContexApi from "./hook/context/SearchContex";
 
 window.onload = () => {
   // khi windown refes thì đăt lại là true

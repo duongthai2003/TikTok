@@ -109,7 +109,7 @@ function Upload({ sa }) {
                 <p>MP4 hoặc WebM</p>
                 <p>Độ phân giải 720x1280 trở lên</p>
                 <p>Tối đa 10 phút</p>
-                <p>Nhỏ hơn 10 GB</p>
+                <p>Nhỏ hơn 10 MB</p>
               </div>
               <div className={cx("button")}>Chọn tập tin</div>
             </div>

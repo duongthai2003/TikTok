@@ -40,8 +40,7 @@ function EditProfile({ onclick }) {
     };
     userName && nickname && clicksavebtn && callapi();
   }, [clicksavebtn]);
-  console.log(clicksavebtn);
-  console.log(avatar);
+
   const handlesavebtn = () => {
     if (clicksavebtn) {
       setclicksavebtn(false);
@@ -67,9 +66,9 @@ function EditProfile({ onclick }) {
             </span>
           </div>
           <div className={cx("conten")}>
-            <div className={cx("row", "item")}>
-              <div className={cx("col-xl-4", "name_lable")}>Profile photo</div>
-              <div className={cx("col-xl-8", "valueblock")}>
+            <div className={cx("grid grid-cols-12", "item")}>
+              <div className={cx("name_lable col-span-4")}>Profile photo</div>
+              <div className={cx("valueblock col-span-8")}>
                 <Selectfileavatar
                   avatar={avatar}
                   setAvatar={setAvatar}
@@ -77,9 +76,9 @@ function EditProfile({ onclick }) {
                 />
               </div>
             </div>
-            <div className={cx("row", "item")}>
-              <div className={cx("col-xl-4", "name_lable")}>Username</div>
-              <div className={cx("col-xl-8", "valueblock")}>
+            <div className={cx("grid grid-cols-12", "item")}>
+              <div className={cx("col-span-4", "name_lable")}>Username</div>
+              <div className={cx("col-span-8", "valueblock")}>
                 <div className={cx("input")}>
                   <Input
                     type={"text"}
@@ -102,9 +101,9 @@ function EditProfile({ onclick }) {
                 </div>
               </div>
             </div>
-            <div className={cx("row", "item")}>
-              <div className={cx("col-xl-4", "name_lable")}>Name</div>
-              <div className={cx("col-xl-8", "valueblock")}>
+            <div className={cx("grid grid-cols-12", "item")}>
+              <div className={cx("col-span-4", "name_lable")}>Name</div>
+              <div className={cx("col-span-8", "valueblock")}>
                 <div className={cx("input")}>
                   <Input
                     type={"text"}
@@ -119,9 +118,9 @@ function EditProfile({ onclick }) {
                 </div>
               </div>
             </div>
-            <div className={cx("row", "item")}>
-              <div className={cx("col-xl-4", "name_lable")}>Bio</div>
-              <div className={cx("col-xl-8", "valueblock")}>
+            <div className={cx("grid grid-cols-12", "item")}>
+              <div className={cx("col-span-4", "name_lable")}>Bio</div>
+              <div className={cx("col-span-8", "valueblock")}>
                 <textarea
                   placeholder="Bio"
                   value={bio}

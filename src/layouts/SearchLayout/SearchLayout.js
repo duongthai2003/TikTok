@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./SearchLayout.module.scss";
-import "bootstrap/dist/css/bootstrap.min.css"; // nap bootstrap
+
 import DefaultLayout from "../DefaultLayout/DefaultLayout";
 import SearchContexApi from "~/hook/context/SearchContex";
 import NabarSearch from "./NabarSearch";
