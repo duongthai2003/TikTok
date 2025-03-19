@@ -4,7 +4,7 @@ import { config } from "~/App";
 const HTTP = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/public/api/`, //`http://tiktokapi-clone`,
 });
-
+console.log(process.env.REACT_APP_API_URL);
 HTTP.interceptors.request.use((req) => {
   const token = config.token_login;
   if (token && req.headers) {
