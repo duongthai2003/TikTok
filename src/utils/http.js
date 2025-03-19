@@ -2,7 +2,7 @@ import axios from "axios";
 import { config } from "~/App";
 
 const HTTP = axios.create({
-  baseURL: `http://tiktokapi-clone/public/api/`,
+  baseURL: `${process.env.REACT_APP_API_URL}/public/api/`, //`http://tiktokapi-clone`,
 });
 
 HTTP.interceptors.request.use((req) => {
