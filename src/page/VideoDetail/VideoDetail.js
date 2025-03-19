@@ -1,13 +1,6 @@
 import classNames from "classnames/bind";
 import HomeHeader from "~/conponents/HomeHeader";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import Comments, { WriteComment } from "~/conponents/Comments";
 import Pretop from "~/conponents/Pretop";
 import Videobtnactive from "~/conponents/Videobtnactive";
@@ -158,16 +151,15 @@ function VideoDetail() {
     switch (profilepage.page) {
       case "/":
         return videolis && videolis;
-        break;
+
       case "/following":
         return videolis && videolis;
-        break;
+
       case "/friends":
         return videolis && videolis;
-        break;
+
       default:
         return videocreattor && videocreattor;
-        break;
     }
   };
 

@@ -147,7 +147,9 @@ function Profile() {
                     ) : (
                       <Fragment>
                         {check_follow ? (
-                          <Button outline>Messages</Button>
+                          <Button to={`/Messages?id=${nickuser.id}`} outline>
+                            <p className={"text-colorPrimary"}>Messages</p>
+                          </Button>
                         ) : (
                           <FollowBtn
                             followingUserId={nickuser.id}

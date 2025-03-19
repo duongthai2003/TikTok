@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicroutes } from "./Routers/index";
 import { DefaultLayout } from "./layouts";
 import BlankLayout from "./layouts/BlankLayout/BlankLayout";
+import ContexApi from "./hook/context/Defaultcontextapi";
 
 window.onload = () => {
   // khi windown refes thì đăt lại là true
@@ -21,7 +22,7 @@ export const setconfig = (key, Value) => {
 setconfig("ismute", true); //muted
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_relativeSplatPath: true }}>
       <div className="App">
         <Routes>
           {publicroutes.map((route, index) => {
@@ -40,9 +41,11 @@ function App() {
                 key={index}
                 path={route.path}
                 element={
-                  <Layout>
-                    <Page />
-                  </Layout>
+                  <ContexApi>
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  </ContexApi>
                 }
               />
             );
