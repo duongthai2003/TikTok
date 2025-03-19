@@ -24,8 +24,8 @@ function SearchResuil({}) {
     <div className={cx("wrapper")}>
       <div className={cx("container")}>
         <div className={cx("row")}>
-          <div className={cx("acc")}>
-            <h5>
+          <div className={cx("acc pl-[8px]")}>
+            <h5 className=" text-[19px] font-bold mt-4">
               Tài Khoản
               <span
                 className={cx("seemore")}
@@ -48,8 +48,8 @@ function SearchResuil({}) {
               );
             })}
           </div>
-          <div className={cx("video")}>
-            <h5>Video</h5>
+          <div className={cx("video pl-[8px]")}>
+            <h5 className="text-[19px] font-bold mt-4">Video</h5>
             <SearchVideopage />
           </div>
         </div>

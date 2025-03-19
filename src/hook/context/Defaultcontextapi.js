@@ -80,10 +80,8 @@ function ContexApi({ children }) {
       setlikeBtn(true);
     }
   };
-  // console.log(listLikeduser);
 
   const api = async () => {
-    console.log("test auth");
     await HTTP.get("/videos?gh=gh", {
       params: {
         page: 1,

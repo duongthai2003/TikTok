@@ -1,7 +1,7 @@
-import httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 export const login = async (email, password) => {
   try {
-    const response = await httprequest.post("users/login", {
+    const response = await HTTP.post("users/login", {
       email,
       password,
     });

@@ -1,6 +1,6 @@
 import styles from "./VideoTag.module.scss";
 import classNames from "classnames/bind";
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { setconfig } from "~/App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,7 @@ function VideoTag(
     playbtn = true,
     onclicplaypause = false,
     children,
+    poster,
   },
   videotagref
 ) {
@@ -71,6 +72,7 @@ function VideoTag(
         muted={muted === true ? false : true}
         ref={videoref}
         src={src}
+        poster={poster}
         loop
         onLoadedData={onlodedplay ? play : noactive}
       />

@@ -1,13 +1,6 @@
 import classNames from "classnames/bind";
 import HomeHeader from "~/conponents/HomeHeader";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import Comments, { WriteComment } from "~/conponents/Comments";
 import Pretop from "~/conponents/Pretop";
 import Videobtnactive from "~/conponents/Videobtnactive";
@@ -16,7 +9,6 @@ import VideoTag from "~/conponents/VideoTag";
 import styles from "./VideoDetail.module.scss";
 
 import { getanvideo } from "~/Services/VideoService/getanvideo";
-import { IPHTTP } from "~/utils/httprequest";
 import { Getcomment } from "~/Services/commentService/Commentlist";
 import { Link } from "react-router-dom";
 import LoginRegister from "../LoginRegister/LoginRegister";
@@ -159,16 +151,15 @@ function VideoDetail() {
     switch (profilepage.page) {
       case "/":
         return videolis && videolis;
-        break;
+
       case "/following":
         return videolis && videolis;
-        break;
+
       case "/friends":
         return videolis && videolis;
-        break;
+
       default:
         return videocreattor && videocreattor;
-        break;
     }
   };
 
@@ -191,7 +182,7 @@ function VideoDetail() {
             className={"detailvideo"}
             onclicplaypause
             onlodedplay
-            src={IPHTTP + datavideo.file_url}
+            src={datavideo.file_url}
             // onlodedplay
           ></VideoTag>
           {videoref !== undefined && (
@@ -234,7 +225,7 @@ function VideoDetail() {
               type={"text"}
               readOnly
               ref={linkref}
-              value={IPHTTP + datavideo.file_url}
+              value={datavideo.file_url}
             ></input>
             <button onClick={handlecoppy}>Copy link</button>
           </div>
@@ -285,7 +276,7 @@ function VideoDetail() {
                         }`;
                       }}
                     >
-                      <VideoTag src={IPHTTP + item.file_url} />
+                      <VideoTag src={item.file_url} poster={item.img_url} />
                     </Link>
                   );
                 })}

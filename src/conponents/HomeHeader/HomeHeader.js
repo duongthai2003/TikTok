@@ -12,7 +12,6 @@ import { useContext, useState } from "react";
 import Tippy from "@tippyjs/react/headless";
 import AccountPreview from "../SuggesteAcount/AcountPrevew/AcountPreview";
 import { Wrapper } from "../popper";
-import { IPHTTP } from "~/utils/httprequest";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import Deleteblock from "../deleteblock";
 import images from "~/access/image";
@@ -81,10 +80,7 @@ function HomeHeaderItem({ data, className, id_current_user }) {
       <div className={cx("user")}>
         <Accprevi>
           <Link to={`@${datauser.nickname}`} onClick={handleclick_user}>
-            <Image
-              className={cx("avatar")}
-              src={IPHTTP + datauser.avatar}
-            ></Image>
+            <Image className={cx("avatar")} src={datauser.avatar}></Image>
           </Link>
         </Accprevi>
 

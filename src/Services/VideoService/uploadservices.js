@@ -1,4 +1,5 @@
-import httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
+
 export const Uploadservice = async (
   description,
   file_url,
@@ -7,13 +8,13 @@ export const Uploadservice = async (
   music
 ) => {
   try {
-    const response = await httprequest.post(
+    const response = await HTTP.post(
       "videos/create",
       {
         description,
         file_url,
         user_id,
-        thumnailvideosecond,
+        snapshot_time: thumnailvideosecond,
         music,
       },
       {

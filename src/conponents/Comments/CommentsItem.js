@@ -11,7 +11,7 @@ import Tippy from "@tippyjs/react/headless";
 import AccountPreview from "../SuggesteAcount/AcountPrevew/AcountPreview";
 import { Wrapper } from "../popper";
 import { useState } from "react";
-import { IPHTTP } from "~/utils/httprequest";
+
 const cx = classNames.bind(styles);
 
 export const context = createContext();
@@ -32,10 +32,7 @@ function CommentsItems({ data, className, atime }) {
       <div className={cx("user")}>
         <Link to={`/@${data.user.nickname}`}>
           {" "}
-          <Image
-            className={cx("avatar")}
-            src={IPHTTP + data.user.avatar}
-          ></Image>
+          <Image className={cx("avatar")} src={data.user.avatar}></Image>
         </Link>
 
         <div className={cx("info")}>

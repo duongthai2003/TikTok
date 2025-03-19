@@ -14,7 +14,7 @@ function Contentmain({ video, page, setpage }) {
   const [loadmore, setloadmore] = useState(false);
   const contairef = useRef();
 
-  const { loading_detail, listLikeduser, likeBtn } = useContext(Appcontext);
+  const { loading_detail, listLikeduser } = useContext(Appcontext);
   window.onscroll = () => {
     if (contairef.current) {
       const heightconten = contairef.current.offsetHeight; //chieu cao cua trang

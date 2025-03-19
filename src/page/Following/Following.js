@@ -8,12 +8,6 @@ import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import LoginRegister from "../LoginRegister/LoginRegister";
 import { config } from "~/App";
 import { backpage } from "../Profile/Profile";
-import Image from "~/conponents/Image";
-import images from "~/access/image";
-import AccountItem from "~/conponents/AccountItem";
-import { Suggest } from "~/Services/SuggestServices";
-import { IPHTTP } from "~/utils/httprequest";
-import FollowBtn from "../Profile/Follow/FollowBtn";
 import RigisterUser from "../LoginRegister/rigister/rigisterUser/RigisterUser";
 import SuggessFollowaccount from "./suggessFollowaccount";
 const cx = classNames.bind(styles);
@@ -40,7 +34,7 @@ function Following() {
     };
     detailluserlogin && fetchApi();
   }, [page, likeBtn]);
-  console.log(config);
+
   return (
     <div className={cx("wrapper")} style={{ width: "650px" }}>
       {config.token_login === "" || config.token_login === undefined ? (

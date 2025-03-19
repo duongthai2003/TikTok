@@ -6,17 +6,12 @@ import styles from "./Upload.module.scss";
 import Image from "~/conponents/Image";
 import VideoTag from "~/conponents/VideoTag";
 import Button from "~/conponents/Button";
-import { IPHTTP } from "~/utils/httprequest";
 import { useRef, useState, useContext, useMemo, useEffect } from "react";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
-import useDebounce from "~/hook/useDebounce";
 import VideoThumbnail from "react-video-thumbnail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Uploadservice } from "~/Services/VideoService/uploadservices";
-
-import axios from "axios";
-import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 function Upload({ sa }) {
@@ -114,7 +109,7 @@ function Upload({ sa }) {
                 <p>MP4 hoặc WebM</p>
                 <p>Độ phân giải 720x1280 trở lên</p>
                 <p>Tối đa 10 phút</p>
-                <p>Nhỏ hơn 10 GB</p>
+                <p>Nhỏ hơn 10 MB</p>
               </div>
               <div className={cx("button")}>Chọn tập tin</div>
             </div>
@@ -148,9 +143,7 @@ function Upload({ sa }) {
                   <VideoTag muted src={srcpath} />
                 </div>
                 <div className={cx("avartar")}>
-                  <Image
-                    src={detailluserlogin && IPHTTP + detailluserlogin.avatar}
-                  />
+                  <Image src={detailluserlogin && detailluserlogin.avatar} />
                 </div>
                 <div className={cx("Activevideo")}>
                   <Videobtnactive data={Data} />

@@ -4,7 +4,6 @@ import Header from "../Conponent/Header/Header";
 import Sidebar from "../Conponent/Sidebar/Sidebar";
 import Pretop from "~/conponents/Pretop";
 import { useState } from "react";
-import ContexApi from "~/hook/context/Defaultcontextapi";
 import SearchContexApi from "~/hook/context/SearchContex";
 
 const cx = className.bind(styles);
@@ -17,19 +16,17 @@ function DefaultLayout({ children }) {
   };
   return (
     <div className={cx("wrapper")}>
-      <ContexApi>
-        <SearchContexApi>
-          <Header />
-          <div className={cx("container")}>
-            <Sidebar />
+      <SearchContexApi>
+        <Header />
+        <div className={cx("container")}>
+          <Sidebar />
 
-            <div className={cx("content")}>
-              {children}
-              {pretop && <Pretop />}
-            </div>
+          <div className={cx("content")}>
+            {children}
+            {pretop && <Pretop />}
           </div>
-        </SearchContexApi>
-      </ContexApi>
+        </div>
+      </SearchContexApi>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 @import "normalize.css"; //reset css
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ///nhung font
 @font-face {
   font-family: ProximaNova;
@@ -41,6 +43,7 @@
 
 :root {
   --primary: #fe2c55;
+  --primary-color: 348, 99%, 58%;
   --black: #000;
   --while: #fff;
   --text-color: #161823;
@@ -139,4 +142,12 @@ p.is-editor-empty:first-child::before {
   float: left;
   height: 0;
   pointer-events: none;
+}
+.dotTextOnLine {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 182px;
 }

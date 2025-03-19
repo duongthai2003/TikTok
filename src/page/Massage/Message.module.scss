@@ -31,22 +31,11 @@
 }
 .users_item {
   position: relative;
-  &:hover {
-    background-color: rgb(238, 234, 229);
+  > div:hover {
+    background-color: #f1f1f1;
   }
 }
-.option {
-  position: absolute;
-  right: 0%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-}
+
 .bodyhed {
   display: flex;
   flex-direction: column;

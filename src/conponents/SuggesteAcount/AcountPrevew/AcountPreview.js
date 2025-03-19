@@ -3,7 +3,6 @@ import classNames from "classnames/bind";
 import Image from "~/conponents/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { IPHTTP } from "~/utils/httprequest";
 import FollowBtn from "~/page/Profile/Follow/FollowBtn";
 import { useContext } from "react";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
@@ -20,7 +19,7 @@ function AccountPreview({ data, bodyshow = false }) {
   return (
     <div className={cx("wrapper", { bodyshow })}>
       <div className={cx("header")}>
-        <Image className={cx("avata")} src={IPHTTP + data.avatar} alt="" />
+        <Image className={cx("avata")} src={data.avatar} alt="" />
         <div>
           {detailluserlogin.id === data.id ? (
             ""

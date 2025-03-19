@@ -1,8 +1,8 @@
-import * as httprequest from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 
 export const getaUser = async (path) => {
   try {
-    const res = await httprequest.lay(`users/profile${path}`);
-    return res.data[0];
+    const res = await HTTP.get(`users/profile${path}`);
+    return res.data?.data[0];
   } catch (err) {}
 };

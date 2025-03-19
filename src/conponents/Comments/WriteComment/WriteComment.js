@@ -47,7 +47,6 @@ function WriteComment({ videoid, onclick, recallcomment }) {
       }
       recallcomment();
     } else {
-      console.log(6666666666);
       onclick();
     }
   };

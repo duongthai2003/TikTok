@@ -18,7 +18,7 @@ function Selectfileavatar({ avatar, setAvatar, currentavatar }) {
   };
 
   return (
-    <label htmlFor="avatar" className={cx("avatarblock")}>
+    <label htmlFor="avatar" className={cx("avatarblock", "block")}>
       <Image src={avatar ? imgsrc() : currentavatar ? currentavatar : "/"} />
       <input
         type={"file"}
@@ -27,7 +27,9 @@ function Selectfileavatar({ avatar, setAvatar, currentavatar }) {
         accept="image/*"
         onChange={handleselectavatar}
       />
-      <span className={cx("selectfileicon")}>
+      <span
+        className={cx("selectfileicon", "flex justify-center items-center")}
+      >
         <SelectFileIcon />
       </span>
     </label>

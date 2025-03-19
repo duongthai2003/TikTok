@@ -19,7 +19,6 @@ import Shareblock from "~/conponents/Videobtnactive/Shareblock";
 import VideoTag from "~/conponents/VideoTag";
 
 import * as profileservice from "~/Services/profileService";
-import { IPHTTP } from "~/utils/httprequest";
 import Image from "~/conponents/Image";
 import styles from "./Profile.module.scss";
 import images from "~/access/image";
@@ -67,8 +66,6 @@ function Profile() {
   nickuser &&
     (document.title = `${nickuser.name} (@${nickuser.nickname}) | TikTok`);
 
-  // console.log(nickuser);
-  // console.log(detailluserlogin);
   const check_follow = CheckArray(
     followinguserlist && followinguserlist,
     nickuser && nickuser.id
@@ -103,7 +100,7 @@ function Profile() {
     // ẩn register sau khi dang nhap thanh cong
     hideshowRegister();
   }
-  console.log(nickuser);
+
   return (
     <div className={cx("wrapper")}>
       {nickuser === undefined ? (
@@ -117,14 +114,13 @@ function Profile() {
         </div>
       ) : (
         <>
-          <div className={cx("profileAcount")}>
+          <div className={cx("profileAcount", "ml-[8px]")}>
             <div className={cx("description")}>
               <div className={cx("info")}>
                 {nickuser.avatar === "" ? (
                   <img src={images.noImg} alt=""></img>
                 ) : (
-                  // <img src={IPHTTP + nickuser.avatar}></img>
-                  <Image src={IPHTTP + nickuser.avatar}></Image>
+                  <Image src={nickuser.avatar}></Image>
                 )}
                 <div>
                   <div className={cx("nick")}>
@@ -151,7 +147,9 @@ function Profile() {
                     ) : (
                       <Fragment>
                         {check_follow ? (
-                          <Button outline>Messages</Button>
+                          <Button to={`/Messages?id=${nickuser.id}`} outline>
+                            <p className={"text-colorPrimary"}>Messages</p>
+                          </Button>
                         ) : (
                           <FollowBtn
                             followingUserId={nickuser.id}
@@ -248,7 +246,7 @@ function Profile() {
             </div>
           </div>
           <div className={cx("videoblock")}>
-            <div className={cx("buttontab")}>
+            <div className={cx("buttontab", "ml-[8px]")}>
               <div className={cx("btn")} onClick={video}>
                 <Button>Video</Button>
               </div>
@@ -271,7 +269,8 @@ function Profile() {
                       >
                         <VideoTag
                           className={cx("profilevideo")}
-                          src={IPHTTP + item.file_url}
+                          src={item.file_url}
+                          poster={item.img_url}
                           mouseOutAutoPause
                           mouseOverAutoPlay
                         >

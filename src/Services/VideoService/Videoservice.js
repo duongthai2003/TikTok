@@ -1,25 +1,25 @@
-import { lay } from "~/utils/httprequest";
+import HTTP from "~/utils/http";
 
 export const Video = async ({ page }) => {
   try {
-    const res = await lay("videos", {
+    const res = await HTTP.get("videos", {
       params: { page },
     });
-    return res.data;
+    return res.data?.data;
   } catch (err) {}
 };
 
 export const FollowingVideoList = async ({ userId, page }) => {
   try {
-    const res = await lay("me/following/videos", {
+    const res = await HTTP.get("me/following/videos", {
       params: { userId, page },
     });
-    return res;
+    return res.data;
   } catch (err) {}
 };
 export const FriendVideoList = async ({ userId, page }) => {
   try {
-    const res = await lay("me/friends/videos", {
+    const res = await HTTP.get("me/friends/videos", {
       params: { userId, page },
     });
     return res;

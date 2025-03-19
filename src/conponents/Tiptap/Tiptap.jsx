@@ -7,6 +7,7 @@ const Tiptap = ({
   content = "<p></p>",
   onChange,
   isSetDefaultContent = false,
+  className,
 }) => {
   const editor = useEditor({
     extensions: [
@@ -18,7 +19,7 @@ const Tiptap = ({
     content: content,
     editorProps: {
       attributes: {
-        class: " ",
+        class: className,
       },
     },
 

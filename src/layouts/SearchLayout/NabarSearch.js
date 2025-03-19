@@ -10,7 +10,7 @@ function NabarSearch({}) {
   document.title = `Find '${Searchkeyword}' on TikTok | TikTok Search`;
 
   return (
-    <div className={cx("nav-pills", "nav")}>
+    <div className={cx("nav-pills", "flex ")}>
       <div className={cx("nav-item")}>
         <MenuItemSidebar
           to={`/Searchs${Searchkeyword && "?q=" + Searchkeyword}`}

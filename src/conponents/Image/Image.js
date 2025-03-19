@@ -3,7 +3,7 @@ import classNames from "classnames";
 import styles from "./Image.module.scss";
 import { forwardRef, useState } from "react";
 
-const Image = forwardRef(({ src, alt, clas, ...props }, ref) => {
+const Image = forwardRef(({ src, alt, className, ...props }, ref) => {
   const [loi, setloi] = useState("");
 
   const handleError = (e) => {
@@ -14,7 +14,7 @@ const Image = forwardRef(({ src, alt, clas, ...props }, ref) => {
     <img
       src={src}
       alt={alt}
-      clas={classNames(styles.wrapper, clas)}
+      className={classNames(styles.wrapper, className)}
       ref={ref}
       {...props}
       onError={handleError}
