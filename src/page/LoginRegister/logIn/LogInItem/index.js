@@ -12,8 +12,8 @@ import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import Loading from "~/conponents/loading/Loading";
 
 export default function LogInItem({ onUserShow, userShow, hide }) {
-  const [email, setEmail] = useState("thaiq9577@gmail.com"); //thaiq9577@gmail.com
-  const [password, setPassword] = useState("123456"); //1234567
+  const [email, setEmail] = useState(""); //thaiq9577@gmail.com
+  const [password, setPassword] = useState(""); //1234567
   const [isError, setIsError] = useState(false);
   const [isEmty, setIsEmty] = useState(false);
   const [isEmtyPass, setIsEmtyPass] = useState(false);
