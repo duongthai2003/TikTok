@@ -21,3 +21,7 @@ const pusher = new Pusher("your_pusher_key", {
 });
 
 export default pusher;
+
+// ở local thì bỏ
+//enabledTransports
+// forceTLS: false,
