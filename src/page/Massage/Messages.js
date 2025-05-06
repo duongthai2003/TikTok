@@ -60,7 +60,6 @@ function Messages() {
   /// nếu kênh là private thì web socket tự động thêm private- vào tên kênh nên phải thêm vào
   // nếu là kênh public thì giữ nguyên như bên api không cần thêm gì
 
-  console.log(channel);
   useEffect(() => {
     if (messageboxref.current && messagesList.length > 1) {
       messageboxref.current.scrollTop = messageboxref.current.scrollHeight;

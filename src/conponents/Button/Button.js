@@ -39,7 +39,7 @@ function Button({
     Videobtnactive,
   });
   return (
-    <Butt className={classes} {...props} onClick={onClick}>
+    <Butt type="submit" className={classes} {...props} onClick={onClick}>
       {lefticon && <span className={cx("icon")}>{lefticon}</span>}
       <span>{children}</span>
       {righticon && <span className={cx("icon")}>{lefticon}</span>}

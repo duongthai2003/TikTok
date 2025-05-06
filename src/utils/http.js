@@ -2,10 +2,10 @@ import axios from "axios";
 import { config } from "~/App";
 
 const HTTP = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}/api/`, //`http://tiktokapi-clone`,
-  withCredentials: true, // hoặc dùng fetch tương đương
+  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: process.env.REACT_APP_CREDENTIALS === "true", // hoặc dùng fetch tương đương
 });
-console.log(process.env.REACT_APP_API_URL);
+
 HTTP.interceptors.request.use((req) => {
   const token = config.token_login;
   if (token && req.headers) {

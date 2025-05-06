@@ -1,20 +1,23 @@
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import "./style.scss";
-export default function Input({
-  name,
-  isEmtyNickName,
-  isEmtyName,
-  isEmtyPass,
-  isEmty,
-  isError,
-  label,
-  value,
-  placeholder,
-  type,
-  onChange,
-  onblur,
-  className,
-}) {
+function Input(
+  {
+    name,
+    isEmtyNickName,
+    isEmtyName,
+    isEmtyPass,
+    isEmty,
+    isError,
+    label,
+    value,
+    placeholder,
+    type,
+    onChange,
+    onblur,
+    className,
+  },
+  ref
+) {
   const classNames = () => {
     return `inputMain ${className}`;
   };
@@ -30,6 +33,7 @@ export default function Input({
           value={value}
           name={name}
           onBlur={onblur}
+          ref={ref}
         />
       </div>
       <p className="error">
@@ -38,3 +42,4 @@ export default function Input({
     </div>
   );
 }
+export default React.forwardRef(Input);

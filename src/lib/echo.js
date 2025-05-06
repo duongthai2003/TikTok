@@ -13,9 +13,9 @@ const pusher = new Pusher("your_pusher_key", {
   },
   wsHost: process.env.REACT_APP_WS_HOST,
   wsPort: process.env.REACT_APP_WS_POST,
-  forceTLS: true,
+  forceTLS: process.env.REACT_APP_FORCE_TLS === "true",
   disableStats: true,
-  authEndpoint: `${process.env.REACT_APP_API_URL}/broadcasting/auth`,
+  authEndpoint: process.env.REACT_APP_AUTH_ENDPOINT,
   cluster: "mt1",
   enabledTransports: ["ws", "wss"],
 });
