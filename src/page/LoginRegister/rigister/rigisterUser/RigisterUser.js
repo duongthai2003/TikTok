@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const cx = classNames.bind(styles);
 
-const TestSchema = z.object({
+const RigisterSchema = z.object({
   email: z.string().email({ message: "Vui lòng nhập đúng định dạng" }),
   password: z.string().min(6, { message: "Mật khẩu phải dài hơn 6 ký tự" }),
   name: z.string().min(1, { message: "Vui lòng nhập tên tài khoản" }),
@@ -39,7 +39,7 @@ function RigisterUser({
     setError,
     formState: { errors, isLoading },
   } = useForm({
-    resolver: zodResolver(TestSchema),
+    resolver: zodResolver(RigisterSchema),
     mode: "onChange", //  validate mỗi khi người dùng gõ
   });
 
@@ -83,9 +83,6 @@ function RigisterUser({
     }
   };
 
-  useEffect(() => {
-    console.log(errors);
-  }, [getEamil, getPassword]);
   return (
     <div
       className={cx(

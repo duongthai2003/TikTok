@@ -1,5 +1,5 @@
 import "./style.scss";
-import Button from "../../assets/button";
+
 import Input from "../../assets/input";
 import { useContext } from "react";
 import React, { useState, useEffect } from "react";
@@ -10,127 +10,82 @@ import useDebounce from "~/hook/useDebounce";
 import * as loginservice from "~/Services/loginservice";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import Loading from "~/conponents/loading/Loading";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import Button from "../../assets/button";
+
+const LoginSchema = z.object({
+  email: z
+    .string()
+    .min(1, {
+      message: "Vui lòng nhập email",
+    })
+    .email({ message: "Vui lòng nhập đúng định dạng" }),
+  password: z.string().min(6, { message: "Mật khẩu phải dài hơn 6 ký tự" }), //Vui lòng nhập PassWord
+});
 
 export default function LogInItem({ onUserShow, userShow, hide }) {
-  const [email, setEmail] = useState(""); //thaiq9577@gmail.com
-  const [password, setPassword] = useState(""); //1234567
-  const [isError, setIsError] = useState(false);
-  const [isEmty, setIsEmty] = useState(false);
-  const [isEmtyPass, setIsEmtyPass] = useState(false);
-  const [senbtn, setsenbtn] = useState(false);
-  const [post, setpost] = useState("");
   const [callapierr, setcallapierr] = useState("");
   const [loading, setloading] = useState(false);
-  const emaildeboune = useDebounce(email, 500);
-  const passdeboune = useDebounce(password, 500);
 
   const { setdata_login_success, btnlikeactive, likeBtn } =
     useContext(Appcontext);
-  useEffect(() => {
-    if (email) {
-      const ischeckEmail = CheckEmail(email);
-      if (!ischeckEmail) {
-        setIsError(true);
-        return;
-      } else {
-        setIsError(false);
-      }
+
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(LoginSchema),
+    // mode: "onChange",
+  });
+
+  console.log(errors);
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      setloading(true);
+      const resuilt = await loginservice.login(data.email, data.password);
+
+      setdata_login_success(resuilt.data);
+
+      setloading(false);
+    } catch (err) {
+      setcallapierr("Email hoặc mật khẩu không chính xác");
+      setloading(false);
     }
-  }, [email]);
-
-  useEffect(() => {
-    if (!emaildeboune.trim() && !passdeboune.trim()) {
-      setpost([]);
-      return;
-    }
-
-    //call api login
-    const callapi = async () => {
-      try {
-        setloading(true);
-        const resuilt = await loginservice.login(emaildeboune, passdeboune);
-
-        setdata_login_success(resuilt.data);
-        setpost(true);
-        setloading(false);
-      } catch (err) {
-        setpost("err");
-        setloading(false);
-      }
-    };
-    callapi();
-  }, [senbtn]);
-
-  // call api false
-  if (post === "err") {
-    setTimeout(() => {
-      handler_when_call_api_fales();
-    }, 100);
-  }
-  const handler_when_call_api_fales = () => {
-    setcallapierr("Email hoặc mật khẩu không chính xác");
   };
 
-  const handleLogIn = () => {
-    if (email === "") {
-      setIsEmty(true);
-    }
-    if (password === "") {
-      setIsEmtyPass(true);
-    }
-    if (
-      email !== "" &&
-      password !== "" &&
-      isEmty === false &&
-      isEmtyPass === false &&
-      isError === false
-    ) {
-      senbtn ? setsenbtn(false) : setsenbtn(true);
-    }
-  };
-  const handlerblur = (e) => {
-    switch (e.target.type) {
-      case "email":
-        email === "" ? setIsEmty(true) : setIsEmty(false);
-        break;
-      case "password":
-        password === "" ? setIsEmtyPass(true) : setIsEmtyPass(false);
-        break;
-      default:
-        return;
-    }
-  };
   return (
     <div className={userShow ? "logInUser" : "logInUserNone"}>
       <div className="logInUser_wrapper">
         <div className="logInUser_wrapper-body">
           <h2>Đăng nhập</h2>
 
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               label="Email: "
               placeholder="Nhập email"
               type="email"
-              value={email}
-              onblur={handlerblur}
-              onChange={(e) => setEmail(e.target.value)}
-              isError={isError ? "Vui lòng nhập đúng định dạng " : ""}
-              isEmty={isEmty ? "Vui lòng nhập email" : ""}
+              isError={errors.email && errors.email.message}
+              {...register("email")}
             />
             <Input
               label="PassWord: "
               placeholder="Nhập passWord"
               type="password"
-              onblur={handlerblur}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              isEmtyPass={isEmtyPass ? "Vui lòng nhập PassWord" : ""}
+              isError={errors.password && errors.password.message}
+              {...register("password")}
             />
+            <p className="Callapierr">{callapierr}</p>
+            <div className="logInUser_wrapper-footer">
+              <Button name="Log In" />
+            </div>
           </form>
-          <p className="Callapierr">{callapierr}</p>
-          <div className="logInUser_wrapper-footer">
-            <Button name="Log In" onClick={handleLogIn} />
-          </div>
         </div>
 
         <div className="logInUser_wrapper-head">
