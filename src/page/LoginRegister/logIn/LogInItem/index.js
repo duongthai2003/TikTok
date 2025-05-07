@@ -30,23 +30,18 @@ export default function LogInItem({ onUserShow, userShow, hide }) {
   const [callapierr, setcallapierr] = useState("");
   const [loading, setloading] = useState(false);
 
-  const { setdata_login_success, btnlikeactive, likeBtn } =
-    useContext(Appcontext);
+  const { setdata_login_success } = useContext(Appcontext);
 
   const {
     register,
     handleSubmit,
-    trigger,
-    watch,
+
     formState: { errors },
   } = useForm({
     resolver: zodResolver(LoginSchema),
-    // mode: "onChange",
   });
 
-  console.log(errors);
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       setloading(true);
       const resuilt = await loginservice.login(data.email, data.password);

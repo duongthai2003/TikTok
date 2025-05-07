@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react/headless";
 import classNames from "classnames/bind";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import AccountItem from "~/conponents/AccountItem";
 import Image from "~/conponents/Image";
 import { Wrapper } from "~/conponents/popper";
@@ -52,26 +52,19 @@ function Messages() {
   });
   const getSearchParams = searchParams.get("id");
   const messageboxref = useRef(null);
+  const storageData = localStorage.getItem("Tiktok");
+  const token = storageData ? JSON.parse(storageData).token_login : null;
 
   // Kết nối WebSocket
   const arr = selectUserMessage && [detailluserlogin.id, selectUserMessage.id];
   const sortedString = arr && arr.sort((a, b) => a - b).join("_");
-  const channel = pusher.subscribe(`private-chat.${sortedString}`);
+
+  const channel = useMemo(() => {
+    return pusher(token).subscribe(`private-chat.${sortedString}`);
+  }, [token, sortedString]);
+
   /// nếu kênh là private thì web socket tự động thêm private- vào tên kênh nên phải thêm vào
   // nếu là kênh public thì giữ nguyên như bên api không cần thêm gì
-
-  useEffect(() => {
-    if (messageboxref.current && messagesList.length > 1) {
-      messageboxref.current.scrollTop = messageboxref.current.scrollHeight;
-    }
-    channel.bind("message.sent", (data) => {
-      setMessagesList((prevMessages) => [...prevMessages, data]);
-    });
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [messagesList]);
 
   useEffect(() => {
     if (selectUserMessage) {
@@ -84,7 +77,22 @@ function Messages() {
       });
       setSelectUserMessage(userReceiver?.user);
     }
+
+    // Kết nối đến kênh WebSocket
+    channel.bind("message.sent", (data) => {
+      setMessagesList((prevMessages) => [...prevMessages, data]);
+    });
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
   }, [selectUserMessage, listUserAccounts]);
+
+  useEffect(() => {
+    if (messageboxref.current && messagesList.length > 1) {
+      messageboxref.current.scrollTop = messageboxref.current.scrollHeight;
+    }
+  }, [messagesList]);
 
   useEffect(() => {
     if (!detailluserlogin.id) {
