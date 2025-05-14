@@ -172,7 +172,9 @@ function VideoDetail() {
         <div className={cx("videopast")}>
           <div
             className={cx("background")}
-            style={{ background: `url(${link}) no-repeat center /cover` }}
+            style={{
+              background: `url(${datavideo.img_url}) no-repeat center /cover`,
+            }}
           ></div>
           <div className={cx("overlay")}></div>
 
