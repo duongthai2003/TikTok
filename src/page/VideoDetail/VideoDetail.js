@@ -156,7 +156,7 @@ function VideoDetail() {
         return videolis && videolis;
 
       case "/friends":
-        return videolis && videolis;
+        return videolis && videolis.data;
 
       default:
         return videocreattor && videocreattor;
