@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 
 function Following() {
   const [video, setvideo] = useState([]);
-  const [page, setpage] = useState(2);
+  const [page, setpage] = useState(1);
   const { likeBtn, detailluserlogin } = useContext(Appcontext);
   const [showregister, setshowregister] = useState(false);
   const [suggeser, setsuggeser] = useState();

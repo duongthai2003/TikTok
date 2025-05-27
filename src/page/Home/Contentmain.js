@@ -2,7 +2,7 @@ import HomeHeader from "~/conponents/HomeHeader";
 import Video from "~/conponents/Video";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
-import { memo, useContext, useRef, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import Loading from "~/conponents/loading/Loading";
 import { Appcontext } from "~/hook/context/Defaultcontextapi";
 import Videobtnactive from "~/conponents/Videobtnactive";
@@ -15,22 +15,40 @@ function Contentmain({ video, page, setpage }) {
   const contairef = useRef();
 
   const { loading_detail, listLikeduser } = useContext(Appcontext);
-  window.onscroll = () => {
-    if (contairef.current) {
-      const heightconten = contairef.current.offsetHeight; //chieu cao cua trang
-      const percentScrolly = Math.floor((window.scrollY / heightconten) * 100); // lay %
 
-      if (percentScrolly === 90) {
-        setpage(page + 1);
-        setloadmore(true);
-      } else {
-        setloadmore(false);
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    if (observerRef.current) observerRef.current.disconnect();
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const lastEntry = entries[0];
+        if (lastEntry.isIntersecting) {
+          setpage((prev) => prev + 1);
+          setloadmore(true);
+        } else {
+          setloadmore(false);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.1,
       }
+    );
+
+    const sentinel = document.querySelector("#sentinel");
+    if (sentinel && video.length > 0) {
+      observerRef.current.observe(sentinel);
     }
-  };
+
+    return () => {
+      if (observerRef.current) observerRef.current.disconnect();
+    };
+  }, [video]);
 
   return (
-    <div ref={contairef}>
+    <div ref={contairef} className="list-video">
       {video &&
         video.map((item, index) => {
           return (
@@ -49,6 +67,9 @@ function Contentmain({ video, page, setpage }) {
             </div>
           );
         })}
+      {/* Phần tử để theo dõi */}
+      <div id="sentinel"></div>
+
       {loading_detail && (
         <div className={cx("load")}>
           <Loading />
